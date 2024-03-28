@@ -10,6 +10,14 @@ import nodemailer from "nodemailer";
 import { SentMessageInfo } from "nodemailer";
 import ForgetPassword from "../models/forgetPassword";
 
+declare global {
+  namespace Express {
+    interface Request {
+      userId: string;
+    }
+  }
+}
+
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
