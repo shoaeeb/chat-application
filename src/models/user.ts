@@ -8,6 +8,7 @@ type UserType = {
   email: string;
   username: string;
   password: string;
+  profilePic: string;
 };
 
 var validateEmail = function (email: string) {
@@ -26,6 +27,7 @@ const userSchema = new mongoose.Schema<UserType>({
     validate: [validateEmail, "please fill a valid email address"],
   },
   password: { type: String, required: true },
+  profilePic: { type: String, default: "" },
 });
 
 userSchema.pre("save", function (next) {
